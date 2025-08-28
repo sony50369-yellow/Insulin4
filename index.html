@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>เครื่องคำนวณจำนวนยาและเข็ม (Insulin & Others)</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" sizes="32x32" href="icon-32x32.png">
+</head>
+<body>
+  <main class="container">
+    <h1>🩺 เครื่องคำนวณจำนวนยาและเข็ม</h1>
+    <p class="caption">โหมดหลายยา | ธีมพาสเทลอ่านสบายตา</p>
+
+    <form id="calc-form" onsubmit="event.preventDefault(); calculate();">
+      <div class="grid">
+        <label>
+          จำนวนวันนัด (วัน)
+          <input type="number" id="days" min="1" step="1" value="30" required />
+        </label>
+        <div class="chips">
+          <button type="button" class="chip" data-target="days" data-value="28">28</button>
+          <button type="button" class="chip" data-target="days" data-value="56">56</button>
+          <button type="button" class="chip" data-target="days" data-value="84">84</button>
+          <button type="button" class="chip" data-target="days" data-value="112">112</button>
+          <button type="button" class="chip" data-target="days" data-value="140">140</button>
+          <button type="button" class="chip" data-target="days" data-value="168">168</button>
+        </div>
+
+        <label>
+          ยา
+          <select id="drug">
+            <option value="insulin">Insulin</option>
+            <option value="gansulog">gansulog</option>
+            <option value="toujeo">Toujeo solostar</option>
+            <option value="teriparatide">Teriparatide (FORTEO)</option>
+          </select>
+        </label>
+
+        <label id="formulation-wrap">
+          รูปแบบยา
+          <select id="formulation"></select>
+        </label>
+
+        <label>
+          ฉีดวันละกี่ครั้ง
+          <input type="number" id="injPerDay" min="1" step="1" value="1" required />
+        </label>
+        <div class="chips">
+          <button type="button" class="chip" data-target="injPerDay" data-value="1">1</button>
+          <button type="button" class="chip" data-target="injPerDay" data-value="2">2</button>
+          <button type="button" class="chip" data-target="injPerDay" data-value="3">3</button>
+          <button type="button" class="chip" data-target="injPerDay" data-value="4">4</button>
+        </div>
+
+        <label id="units-wrap">
+          ยูนิตอินซูลินต่อวัน (IU/day)
+          <input type="number" id="dailyUnits" min="0" step="0.5" value="4" />
+        </label>
+      </div>
+
+      <button class="primary" type="submit">คำนวณ</button>
+      <button class="secondary" type="button" onclick="resetForm()">ล้างค่า</button>
+    </form>
+
+    <section id="results" class="card" hidden>
+      <h2>ผลลัพธ์</h2>
+      <div id="resultsBody"></div>
+      <details>
+        <summary>ดูรายละเอียดการคำนวณ</summary>
+        <div id="debug"></div>
+      </details>
+    </section>
+
+    <section class="notes">
+      <h3>เงื่อนไขตามชนิดยา</h3>
+      <ul>
+        <li><strong>Insulin / gansulog</strong>:
+          Penfill 300 IU/amp (5 ครั้ง/เข็ม), Vial 1000 IU/vial (2 ครั้ง/เข็ม), อายุยาเมื่อเปิดใช้ 45 วัน</li>
+        <li><strong>Toujeo solostar</strong>: Pre‑filled Pen 450 IU/pen, ให้เข็ม <strong>6 เข็ม/pen</strong>, อายุยาเมื่อเปิดใช้ <strong>45 วัน</strong></li>
+        <li><strong>Teriparatide (FORTEO)</strong>: Pre‑filled Pen 600 mcg/pen, ให้เข็ม <strong>28 เข็ม/pen</strong>, ใช้ <strong>1 pen ต่อ 28 วัน</strong></li>
+      </ul>
+    </section>
+
+    <footer class="footer">
+      <span>© 2025</span>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
