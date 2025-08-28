@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>เครื่องคำนวณจำนวนยาและเข็ม (Insulin & Others)</title>
+  <title>โปรแกรมคำนวณจำนวนยาฉีดและเข็ม</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" sizes="32x32" href="icon-32x32.png">
 </head>
 <body>
   <main class="container">
-    <h1>🩺 เครื่องคำนวณจำนวนยาและเข็ม</h1>
+    <h1>💉 โปรแกรมคำนวณจำนวนยาฉีดและเข็ม</h1>
     <p class="caption">โหมดหลายยา | ธีมพาสเทลอ่านสบายตา</p>
 
     <form id="calc-form" onsubmit="event.preventDefault(); calculate();">
@@ -55,7 +55,7 @@
         </div>
 
         <label id="units-wrap">
-          ยูนิตอินซูลินต่อวัน (IU/day)
+          ยูนิตต่อวัน (IU/day)
           <input type="number" id="dailyUnits" min="0" step="0.5" value="4" />
         </label>
       </div>
@@ -80,11 +80,12 @@
           Penfill 300 IU/amp (5 ครั้ง/เข็ม), Vial 1000 IU/vial (2 ครั้ง/เข็ม), อายุยาเมื่อเปิดใช้ 45 วัน</li>
         <li><strong>Toujeo solostar</strong>: Pre‑filled Pen 450 IU/pen, ให้เข็ม <strong>6 เข็ม/pen</strong>, อายุยาเมื่อเปิดใช้ <strong>45 วัน</strong></li>
         <li><strong>Teriparatide (FORTEO)</strong>: Pre‑filled Pen 600 mcg/pen, ให้เข็ม <strong>28 เข็ม/pen</strong>, ใช้ <strong>1 pen ต่อ 28 วัน</strong></li>
+        <li>โปรดปรับตามแนวปฏิบัติของหน่วยงานคุณ</li>        
       </ul>
     </section>
 
     <footer class="footer">
-      <span>© 2025</span>
+      <span>© 2025 ภก.กันตพงศ์ วงศ์เอนกเกษม</span>
     </footer>
   </main>
 
